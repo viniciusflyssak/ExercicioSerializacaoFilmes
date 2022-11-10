@@ -3,8 +3,9 @@ package entidade;
 import java.time.LocalDate;
 import enums.Genero;
 import entidade.Sessao;
+import java.io.Serializable;
 
-public class Filme {
+public class Filme implements Serializable{
     private Genero genero;
 
     public Filme(Genero genero, String titulo, Sessao sessao) {

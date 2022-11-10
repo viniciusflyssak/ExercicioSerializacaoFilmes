@@ -198,10 +198,8 @@ public class FrmFilme extends javax.swing.JFrame {
 
     private void btAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAbrirActionPerformed
         JFileChooser chooser = new JFileChooser();
-        if (chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
-
-            filmeDao.abrir(chooser.getSelectedFile().getPath());
-
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            filmeDao.abrir(chooser.getSelectedFile().getPath());              
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btAbrirActionPerformed
 

@@ -54,16 +54,15 @@ public class FilmeDao implements Serializable{
         this.listaFilmes = listaFilmes;
     }
    
-    public List<Filme> abrir(String path){
+    public void abrir(String path){
        try(InputStream input = new FileInputStream(path)){
             ObjectInputStream object = new ObjectInputStream(input);
-            listaFilmes = (List<Filme>)object.readObject();
+            this.listaFilmes = (List<Filme>)object.readObject();
        }catch(IOException ex){
           ex.printStackTrace();
        } catch (ClassNotFoundException ex) {
            ex.printStackTrace();
-       }
-       return listaFilmes;
+       }       
     }
     
 }

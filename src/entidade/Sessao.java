@@ -1,11 +1,12 @@
 package entidade;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 
-public class Sessao {
+public class Sessao implements Serializable{
     
     private LocalDate Data;
     private LocalTime Hora;
