@@ -213,7 +213,9 @@ public class FrmFilme extends javax.swing.JFrame {
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-
+        int indice = tbFilmes.getSelectedRow();
+        filmeDao.getListaFilmes().remove(indice);
+        tableModel.onRemove(indice);
     }//GEN-LAST:event_btExcluirActionPerformed
 
     /**

@@ -23,6 +23,10 @@ public class FilmeListModel extends AbstractTableModel{
         fireTableRowsInserted(ultimoIndice, ultimoIndice); 
     }
     
+    public void onRemove(int indice){
+        fireTableRowsDeleted(indice, indice);  
+    }
+    
     @Override
     public int getRowCount() {
         return this.listaFilmes.size();
