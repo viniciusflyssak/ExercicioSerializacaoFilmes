@@ -18,6 +18,11 @@ public class FilmeListModel extends AbstractTableModel{
         this.listaFilmes = listaFilmes;
     }
 
+    public void onÍnsert(){
+        int ultimoIndice = getRowCount() - 1;
+        fireTableRowsInserted(ultimoIndice, ultimoIndice); 
+    }
+    
     @Override
     public int getRowCount() {
         return this.listaFilmes.size();

@@ -11,16 +11,29 @@ import java.io.Serializable;
 import java.util.List;
 import javax.swing.JOptionPane;
 import entidade.Filme;
+import entidade.Sessao;
+import enums.Genero;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
+import java.util.ArrayList;
 
 public class FilmeDao implements Serializable{
     
     private List<Filme> listaFilmes;
 
-    public FilmeDao(List<Filme> listaFilmes) {
-        this.listaFilmes = listaFilmes;
-    }
-
     public FilmeDao() {
+        listaFilmes = new ArrayList<>();
+        Sessao sessao1 = new Sessao(LocalDate.now(), LocalTime.now(), BigDecimal.valueOf(120.40));
+        Filme filme1 = new Filme(Genero.Acao, "A aventura inesperada", sessao1);
+
+        Sessao sessao2 = new Sessao(LocalDate.of(2022, Month.MARCH, 25), LocalTime.of(14, 45), BigDecimal.valueOf(120.40));
+        Filme filme2 = new Filme(Genero.Comedia, "Piadas 5", sessao1);
+
+        this.listaFilmes.add(filme1);
+        this.listaFilmes.add(filme2);
     }
 
     public void gravar(String path) {

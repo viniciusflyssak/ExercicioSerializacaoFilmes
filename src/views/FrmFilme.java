@@ -14,7 +14,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import enums.Genero;
 import java.math.BigDecimal;
-
+import javax.swing.table.AbstractTableModel;
 /**
  *
  * @author vinic
@@ -25,11 +25,12 @@ public class FrmFilme extends javax.swing.JFrame {
      * Creates new form FrmPrincipal
      */
     public FilmeDao filmeDao;
+    public FilmeListModel tableModel;
     public FrmFilme() {        
         super.setLocationRelativeTo(null);
         initComponents();
         filmeDao = new FilmeDao();
-        FilmeListModel tableModel = new FilmeListModel(filmeDao.getListaFilmes());
+        tableModel = new FilmeListModel(filmeDao.getListaFilmes());
         tbFilmes.setModel(tableModel);
         cbGenero.setModel(new DefaultComboBoxModel(Genero.values()));
     }
@@ -206,8 +207,9 @@ public class FrmFilme extends javax.swing.JFrame {
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         Sessao sessao = new Sessao(LocalDate.parse(tfData.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")), LocalTime.parse(tfHora.getText()), BigDecimal.ZERO);
-        Filme filme = new Filme((Genero)cbGenero.getSelectedItem(), tfFilme.getText(), sessao);
+        Filme filme = new Filme((Genero)cbGenero.getSelectedItem(), tfFilme.getText(), sessao); 
         filmeDao.getListaFilmes().add(filme);
+        tableModel.onÍnsert();
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
